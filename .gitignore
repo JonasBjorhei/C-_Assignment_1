@@ -27,3 +27,5 @@
 *.svclog
 *.scc
 *.suo
+*.vsidx
+*.vsidx
