@@ -11,5 +11,9 @@ namespace Assignment1.Heroes
     {
         public HeroAttributes LevelAttributes { get; set; }
         public HeroAttributesModifiers AttributeModifiers { get; set; }
+
+        public new ValidWeaponTypes ValidWeaponTypes { get; set; } = HeroClass.ValidWeaponTypes.Axe & HeroClass.ValidWeaponTypes.Hammer & HeroClass.ValidWeaponTypes.Sword;
+
+        public new ValidArmorTypes ValidArmorTypes { get; set; } = HeroClass.ValidArmorTypes.Mail & HeroClass.ValidArmorTypes.Plate;
     }
 }

@@ -10,11 +10,17 @@ namespace Assignment1.Heroes
 {
     internal class Mage : HeroClass
     {
+
+        public new enum mageWeapons
+        {
+            Wand,
+            Staff
+        }
         public HeroAttributes LevelAttributes { get; set; }
         public HeroAttributesModifiers AttributeModifiers { get; set; }
-
-        private static readonly (ValidWeaponTypes Wand, ValidWeaponTypes Staff) value = (HeroClass.ValidWeaponTypes.Wand, HeroClass.ValidWeaponTypes.Staff);
-        public new ValidArmorTypes ValidArmorTypes = HeroClass.ValidArmorTypes.Cloth;
+        public new ValidWeaponTypes ValidWeaponTypes { get; set; } = HeroClass.ValidWeaponTypes.Staff & HeroClass.ValidWeaponTypes.Wand;
+ 
+        public new ValidArmorTypes ValidArmorTypes { get; set; } = HeroClass.ValidArmorTypes.Cloth;
 
         
     }

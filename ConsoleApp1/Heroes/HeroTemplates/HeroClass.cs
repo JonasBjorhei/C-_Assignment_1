@@ -9,7 +9,6 @@ namespace Assignment1.Heroes.HeroTemplates
 {
     internal abstract class HeroClass
     {
-        public new ValidWeaponTypes ValidWeaponTypes = value.Staff && value.Wand;
         public string Name { get; set; }
         public int Level { get; set; }
 
@@ -21,14 +20,14 @@ namespace Assignment1.Heroes.HeroTemplates
         public  object Equipment { get; set; }
 
         public enum ValidWeaponTypes 
-        { 
-        Staff,
-        Wand,
-        Bow,
-        Dagger,
-        Sword,
-        Hammer,
-        Axe
+        {
+            Staff,
+            Wand,
+            Bow,
+            Dagger,
+            Sword,
+            Hammer,
+            Axe
         };
 
         public enum ValidArmorTypes
