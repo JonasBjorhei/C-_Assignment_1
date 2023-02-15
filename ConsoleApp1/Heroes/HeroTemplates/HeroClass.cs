@@ -10,16 +10,16 @@ namespace Assignment1.Heroes.HeroTemplates
     internal abstract class HeroClass
     {
         public string Name { get; set; }
-        public int Level { get; set; }
+        public int Level { get; set; } = 1;
 
         public HeroAttributes LevelAttributes { get; set; }
 
         public HeroAttributesModifiers AttributeModifiers { get; set; }
 
 
-        public  object Equipment { get; set; }
+        public object Equipment { get; set; }
 
-        public enum ValidWeaponTypes 
+        public enum ValidWeaponTypes
         {
             Staff,
             Wand,
@@ -31,11 +31,11 @@ namespace Assignment1.Heroes.HeroTemplates
         };
 
         public enum ValidArmorTypes
-        { 
-          Cloth,
-          Leather,
-          Mail,
-          Plate
+        {
+            Cloth,
+            Leather,
+            Mail,
+            Plate
         };
 
     }
