@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assignment1.Heroes.HeroTemplates;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,11 @@ namespace Assignment1.Items
     internal class Item
     {
 
-        string itenName;
+       public string itemName { get; set; }
+       public int requiredLevel { get; set; }
+
+        public HeroClass.Slot slot { get; set; }
+
 
 
     }

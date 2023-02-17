@@ -11,13 +11,19 @@ namespace Assignment1.Heroes
 {
     internal class Mage : HeroClass
     {
-        public string Class = "Mage";
-   
-        public HeroAttributes levelAttributes { get; set; } = new HeroAttributes(1, 1, 8, 1, 1, 5);
-
         public new ValidWeaponTypes validWeaponTypes { get; set; } = HeroClass.ValidWeaponTypes.Staff & HeroClass.ValidWeaponTypes.Wand;
- 
+
         public new ValidArmorTypes validArmorTypes { get; set; } = HeroClass.ValidArmorTypes.Cloth;
+        public HeroAttributes levelAttributes { get; set; }
+        public Mage(string heroName)
+        {
+            name = heroName;
+            Class = "Mage";
+
+         levelAttributes= new HeroAttributes(1, 1, 8, 1, 1, 5);
+
+        startingWeapon = new Items.Weapon("Beginner staff", 1, Items.Weapon.WeaponTypes.Staff);
+        }
 
         public override void LevelUp()
         {
@@ -25,6 +31,10 @@ namespace Assignment1.Heroes
             levelAttributes.levelUpAttributes();
             Console.WriteLine(name + " leveled up to level " + level);
         }
+
+        public override void equipWeapon() { }
+
+        public override void equipArmor() { }
 
         public override int TotalAttributes()
         {
@@ -36,9 +46,5 @@ namespace Assignment1.Heroes
             return 0;
         }
 
-        public override void Display()
-        {
-           StringBuilder display = new StringBuilder();
-        }
     }
 }

@@ -17,13 +17,21 @@ namespace Assignment1.Heroes
 
         public new ValidArmorTypes validArmorTypes { get; set; } = HeroClass.ValidArmorTypes.Leather & HeroClass.ValidArmorTypes.Mail;
 
+        public Rogue(string heroName)
+        {
+            name = heroName;
+        }
         public override void LevelUp()
         {
-            level = +1;
+            level++;
             levelAttributes.levelUpAttributes();
             Console.WriteLine(name + " leveled up to level " + level);
 
         }
+
+        public override void equipWeapon() { }
+
+        public override void equipArmor() { }
 
         public override int TotalAttributes()
         {
@@ -35,7 +43,7 @@ namespace Assignment1.Heroes
             return 0;
         }
 
-        public override void Display()
+        public void Display()
         {
 
         }
