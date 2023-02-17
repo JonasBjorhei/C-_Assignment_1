@@ -9,19 +9,34 @@ namespace Assignment1.Heroes
 {
     internal class Ranger : HeroClass
     {
-        public HeroAttributes LevelAttributes { get; set; } = new HeroAttributes(1, 7, 1);
-        public HeroAttributesModifiers AttributeModifiers { get; set; } = new HeroAttributesModifiers(1, 5, 1);
+        public string Class = "Ranger";
+        public HeroAttributes levelAttributes { get; set; } = new HeroAttributes(1, 7, 1, 1, 5, 1);
 
-        public new ValidWeaponTypes ValidWeaponTypes { get; set; } = HeroClass.ValidWeaponTypes.Bow;
+        public new ValidWeaponTypes validWeaponTypes { get; set; } = HeroClass.ValidWeaponTypes.Bow;
 
-        public new ValidArmorTypes ValidArmorTypes { get; set; } = HeroClass.ValidArmorTypes.Leather & HeroClass.ValidArmorTypes.Mail;
+        public new ValidArmorTypes validArmorTypes { get; set; } = HeroClass.ValidArmorTypes.Leather & HeroClass.ValidArmorTypes.Mail;
 
-        public void LevelUp()
+        public override void LevelUp()
         {
-            Level = +1;
-            LevelAttributes.Strength = LevelAttributes.Strength + AttributeModifiers.StrengthModifier;
-            LevelAttributes.Dexterity = LevelAttributes.Dexterity + AttributeModifiers.DexterityModifier;
-            LevelAttributes.Intelligence = LevelAttributes.Intelligence + AttributeModifiers.IntelligenceModifier;
+            level = +1;
+            levelAttributes.levelUpAttributes();
+            Console.WriteLine(name + " leveled up to level " + level);
+
+        }
+
+        public override int TotalAttributes()
+        {
+            return 0;
+        }
+
+        public override int Damage()
+        {
+            return 0;
+        }
+
+        public override void Display()
+        {
+
         }
     }
 }

@@ -17,11 +17,22 @@ namespace Assignment1.Heroes.HeroTemplates
         public int IntelligenceModifier { get; set; }
 
 
-        public HeroAttributes(int strength, int dexterity, int intelligence)
+        public HeroAttributes(int strength, int dexterity, int intelligence, int strengthModifier, int dexterityModifier, int intelligenceModifier)
         {
             Strength = strength;
             Dexterity = dexterity;
             Intelligence = intelligence;
+
+            StrengthModifier = strengthModifier;
+            DexterityModifier = strengthModifier;
+            IntelligenceModifier = intelligenceModifier;
+        }
+
+        public void levelUpAttributes()
+        {
+            Strength = Strength + StrengthModifier;
+            Dexterity = Dexterity + DexterityModifier;
+            Intelligence= Intelligence + IntelligenceModifier;
         }
 
     }

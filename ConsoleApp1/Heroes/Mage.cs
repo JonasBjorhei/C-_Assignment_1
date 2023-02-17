@@ -11,21 +11,34 @@ namespace Assignment1.Heroes
 {
     internal class Mage : HeroClass
     {
-
+        public string Class = "Mage";
    
-        public HeroAttributes LevelAttributes { get; set; } = new HeroAttributes(1, 1, 8);
-        public HeroAttributesModifiers AttributeModifiers { get; set; } = new HeroAttributesModifiers(1, 1, 5);
+        public HeroAttributes levelAttributes { get; set; } = new HeroAttributes(1, 1, 8, 1, 1, 5);
 
-        public new ValidWeaponTypes ValidWeaponTypes { get; set; } = HeroClass.ValidWeaponTypes.Staff & HeroClass.ValidWeaponTypes.Wand;
+        public new ValidWeaponTypes validWeaponTypes { get; set; } = HeroClass.ValidWeaponTypes.Staff & HeroClass.ValidWeaponTypes.Wand;
  
-        public new ValidArmorTypes ValidArmorTypes { get; set; } = HeroClass.ValidArmorTypes.Cloth;
+        public new ValidArmorTypes validArmorTypes { get; set; } = HeroClass.ValidArmorTypes.Cloth;
 
-        public void LevelUp()
+        public override void LevelUp()
         {
-            Level =+ 1;
-            LevelAttributes.Strength = LevelAttributes.Strength + AttributeModifiers.StrengthModifier;
-            LevelAttributes.Dexterity = LevelAttributes.Dexterity + AttributeModifiers.DexterityModifier;
-            LevelAttributes.Intelligence = LevelAttributes.Intelligence + AttributeModifiers.IntelligenceModifier;
+            level++;
+            levelAttributes.levelUpAttributes();
+            Console.WriteLine(name + " leveled up to level " + level);
+        }
+
+        public override int TotalAttributes()
+        {
+            return 0;
+        }
+
+        public override int Damage()
+        {
+            return 0;
+        }
+
+        public override void Display()
+        {
+           StringBuilder display = new StringBuilder();
         }
     }
 }

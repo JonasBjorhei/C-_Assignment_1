@@ -9,15 +9,14 @@ namespace Assignment1.Heroes.HeroTemplates
 {
     internal abstract class HeroClass
     {
-        public string Name { get; set; }
-        public int Level { get; set; } = 1;
+        public string name { get; set; }
+        public int level { get; set; } = 1;
 
-        public HeroAttributes LevelAttributes { get; set; }
+        public string Class { get; set; }
 
-        public HeroAttributesModifiers AttributeModifiers { get; set; }
+        public HeroAttributes levelAttributes { get; set; }
 
-
-        public object Equipment { get; set; }
+        public object equipment { get; set; }
 
         public enum ValidWeaponTypes
         {
@@ -38,5 +37,14 @@ namespace Assignment1.Heroes.HeroTemplates
             Plate
         };
 
+        public abstract void LevelUp();
+
+        public void Equip () { }
+
+        public abstract int Damage();
+
+        public abstract int TotalAttributes();
+
+        public abstract void Display();
     }
 }

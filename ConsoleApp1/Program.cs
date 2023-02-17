@@ -11,39 +11,40 @@ internal class Assignment
     {
         Warrior warriorHero = new Warrior()
         {
-            Name = "Diadelus"
+            name = "Diadelus"
 
         };
         Mage mageHero = new Mage()
         {
-            Name = "Dumbledore"
+            name = "Dumbledore"
         };
 
         Rogue rogueHero = new Rogue()
         {
-            Name = "Bach stabb"
+            name = "Bach stabb"
         };
         Ranger rangerHero = new Ranger()
         {
-            Name = "Legolas"
+            name = "Legolas"
         };
 
 
         Console.WriteLine("Hello, World!");
-        Console.WriteLine(mageHero.Name);
-        Console.WriteLine(mageHero.LevelAttributes.Strength);
-        Console.WriteLine(mageHero.LevelAttributes.Dexterity);
-        Console.WriteLine(mageHero.LevelAttributes.Intelligence);
-        Console.WriteLine(mageHero.AttributeModifiers.IntelligenceModifier);
+        Console.WriteLine(mageHero.name);
+        Console.WriteLine(mageHero.Class);
+        Console.WriteLine(mageHero.name + " Strength is " + mageHero.levelAttributes.Strength);
+        Console.WriteLine(mageHero.name + " Dexterity is " + mageHero.levelAttributes.Dexterity);
+        Console.WriteLine(mageHero.name + " Intelligence is " + mageHero.levelAttributes.Intelligence);
+        Console.WriteLine(mageHero.name + " Int modifier is " + mageHero.levelAttributes.IntelligenceModifier);
         mageHero.LevelUp();
 
 
-        Console.WriteLine(mageHero.LevelAttributes.Strength);
-        Console.WriteLine(mageHero.LevelAttributes.Dexterity);
-        Console.WriteLine(mageHero.LevelAttributes.Intelligence);
-        Console.WriteLine(mageHero.AttributeModifiers.IntelligenceModifier);
-        Console.WriteLine(mageHero.ValidArmorTypes);
-        Console.WriteLine(mageHero.ValidWeaponTypes);
+        Console.WriteLine(mageHero.name + " Strength is " + mageHero.levelAttributes.Strength);
+        Console.WriteLine(mageHero.name + " Dexterity is " + mageHero.levelAttributes.Dexterity);
+        Console.WriteLine(mageHero.name + " Intelligence is " + mageHero.levelAttributes.Intelligence);
+        Console.WriteLine(mageHero.name + " Int modifier is " + mageHero.levelAttributes.IntelligenceModifier);
+        Console.WriteLine(mageHero.validArmorTypes);
+        Console.WriteLine(mageHero.validWeaponTypes);
 
 
     }
