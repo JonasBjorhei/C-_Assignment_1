@@ -20,7 +20,6 @@ namespace Assignment1.Items
 
         public ArmorType armorType;
 
-        public HeroAttributes armorAttributes;
         public int[] armorModifiers = { 0, 0, 0 };
 
         public Armor (string name, int reqLevel, ArmorType type, HeroClass.Slot itemSlot)
@@ -36,7 +35,7 @@ namespace Assignment1.Items
         }
         private int calculateArmorAttribute()
         {
-            int maxAttribute = 10;
+            int maxAttribute = 5;
             int randomizedModifier = RandomNumberGenerator.GetInt32(maxAttribute);
             return requiredLevel + randomizedModifier;
         }

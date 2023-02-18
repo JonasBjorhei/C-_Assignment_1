@@ -14,15 +14,19 @@ namespace Assignment1.Heroes
         public new ValidWeaponTypes validWeaponTypes { get; set; } = HeroClass.ValidWeaponTypes.Staff & HeroClass.ValidWeaponTypes.Wand;
 
         public new ValidArmorTypes validArmorTypes { get; set; } = HeroClass.ValidArmorTypes.Cloth;
-        public HeroAttributes levelAttributes { get; set; }
+ 
         public Mage(string heroName)
         {
             name = heroName;
             Class = "Mage";
 
-         levelAttributes= new HeroAttributes(1, 1, 8, 1, 1, 5);
-
-        startingWeapon = new Items.Weapon("Beginner staff", 1, Items.Weapon.WeaponTypes.Staff);
+            levelAttributes= new HeroAttributes(1, 1, 8, 1, 1, 5);
+            startingArmorHead = new Items.Armor("Beginner hat", 1, Items.Armor.ArmorType.Cloth, Slot.Head);
+            startingArmorBody = new Items.Armor("Beginner robe", 1, Items.Armor.ArmorType.Cloth, Slot.Body);
+            startingArmorLegs = new Items.Armor("Beginner pants", 1, Items.Armor.ArmorType.Cloth, Slot.Legs);
+            startingWeapon = new Items.Weapon("Beginner staff", 1, Items.Weapon.WeaponTypes.Staff);
+            initializeStarterGear();
+            
         }
 
         public override void LevelUp()
@@ -36,10 +40,6 @@ namespace Assignment1.Heroes
 
         public override void equipArmor() { }
 
-        public override int TotalAttributes()
-        {
-            return 0;
-        }
 
         public override int Damage()
         {

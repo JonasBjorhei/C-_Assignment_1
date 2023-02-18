@@ -1,10 +1,4 @@
 ﻿using Assignment1.Items;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Security;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Assignment1.Heroes.HeroTemplates
 {
@@ -15,9 +9,9 @@ namespace Assignment1.Heroes.HeroTemplates
 
         public string Class { get; set; }
 
-        public HeroAttributes levelAttributes { get; }
+        public HeroAttributes levelAttributes { get; set; }
 
-        public Dictionary <Slot, Item> equipment { get; set; }
+        public Dictionary<Slot, Item> equipment { get; set; }
 
         public Exception LevelTooLowException;
         public Exception InvalidWeaponType;
@@ -28,7 +22,7 @@ namespace Assignment1.Heroes.HeroTemplates
         public Armor startingArmorBody;
         public Armor startingArmorLegs;
 
-        public enum ValidWeaponTypes 
+        public enum ValidWeaponTypes
         {
             Staff,
             Wand,
@@ -61,43 +55,68 @@ namespace Assignment1.Heroes.HeroTemplates
 
         public abstract void LevelUp();
 
-        public abstract void equipWeapon ();
+        public abstract void equipWeapon();
 
         public abstract void equipArmor();
 
         public abstract int Damage();
 
-        public abstract int TotalAttributes();
+        public HeroAttributes TotalAttributes()
+        {
+            HeroAttributes totalAttributes = new HeroAttributes(0, 0, 0, 0, 0, 0);
+            totalAttributes.Strength = totalAttributes.Strength + levelAttributes.Strength
+                                      + equipment[Slot.Head].armorAttributes.Strength
+                                      + equipment[Slot.Body].armorAttributes.Strength
+                                      + equipment[Slot.Legs].armorAttributes.Strength;
+            totalAttributes.Dexterity = totalAttributes.Dexterity + levelAttributes.Dexterity
+                                     + equipment[Slot.Head].armorAttributes.Dexterity
+                                     + equipment[Slot.Body].armorAttributes.Dexterity
+                                     + equipment[Slot.Legs].armorAttributes.Dexterity;
+            totalAttributes.Intelligence = totalAttributes.Intelligence + levelAttributes.Intelligence
+                                     + equipment[Slot.Head].armorAttributes.Intelligence
+                                     + equipment[Slot.Body].armorAttributes.Intelligence
+                                     + equipment[Slot.Legs].armorAttributes.Intelligence;
+            return totalAttributes;
+        }
 
         public void Display()
         {
             Console.WriteLine("Hello, World!");
-            Console.WriteLine(name);
-            Console.WriteLine(Class);
-            Console.WriteLine(name + " Strength is " + levelAttributes.Strength);
-            //Console.WriteLine(name + " Dexterity is " + levelAttributes.Dexterity);
-            //Console.WriteLine(name + " Intelligence is " + levelAttributes.Intelligence);
-            //Console.WriteLine(name + " Int modifier is " + levelAttributes.IntelligenceModifier);
-            LevelUp();
+            Console.WriteLine("Name: " + name);
+            Console.WriteLine("Class: "+ Class);
+            Console.WriteLine("Level ; "+ level);
 
+            Console.WriteLine(name + " Strength is " + TotalAttributes().Strength);
+            Console.WriteLine(name + " Dexterity is " + TotalAttributes().Dexterity);
+            Console.WriteLine(name + " Intelligence is " + TotalAttributes().Intelligence);
 
- /*           Console.WriteLine(name + " Strength is " + this.levelAttributes.Strength);
-            Console.WriteLine(name + " Dexterity is " + this.levelAttributes.Dexterity);
-            Console.WriteLine(name + " Intelligence is " + this.levelAttributes.Intelligence);
-            Console.WriteLine(name + " Int modifier is " + this.levelAttributes.IntelligenceModifier);*/
+            //Damage
+
+/*            Console.WriteLine(equipment[Slot.Head].itemName + " Strength bonus is "  +equipment[Slot.Head].armorAttributes.Strength);
+            Console.WriteLine(equipment[Slot.Head].itemName + " Dexterity bonus is " + equipment[Slot.Head].armorAttributes.Dexterity);
+            Console.WriteLine(equipment[Slot.Head].itemName + " Intelligence bonus is " + equipment[Slot.Head].armorAttributes.Intelligence);
+
+            Console.WriteLine(equipment[Slot.Body].itemName + " Strength bonus is " + equipment[Slot.Body].armorAttributes.Strength);
+            Console.WriteLine(equipment[Slot.Body].itemName + " Dexterity bonus is " + equipment[Slot.Body].armorAttributes.Dexterity);
+            Console.WriteLine(equipment[Slot.Body].itemName + " Intelligence bonus is " + equipment[Slot.Body].armorAttributes.Intelligence);
+
+            Console.WriteLine(equipment[Slot.Legs].itemName + " Strength bonus is " + equipment[Slot.Legs].armorAttributes.Strength);
+            Console.WriteLine(equipment[Slot.Legs].itemName + " Dexterity bonus is " + equipment[Slot.Legs].armorAttributes.Dexterity);
+            Console.WriteLine(equipment[Slot.Legs].itemName + " Intelligence bonus is " + equipment[Slot.Legs].armorAttributes.Intelligence);
+
             Console.WriteLine(this.validArmorTypes);
-            Console.WriteLine(this.validWeaponTypes);
+            Console.WriteLine(this.validWeaponTypes);*/
 
-           // Console.WriteLine(name + " Weapon is " + equipment[HeroClass.Slot.Weapon].slot);
+            // Console.WriteLine(name + " Weapon is " + equipment[HeroClass.Slot.Weapon].slot);
         }
 
-        private void equipStarterGear()
+        public void initializeStarterGear()
         {
             equipment = new Dictionary<Slot, Item>();
-            equipment.Add(Slot.Weapon, null);
-            equipment.Add(Slot.Head, null);
-            equipment.Add(Slot.Body, null);
-            equipment.Add(Slot.Legs, null);
+            equipment.Add(Slot.Weapon, startingWeapon);
+            equipment.Add(Slot.Head, startingArmorHead);
+            equipment.Add(Slot.Body, startingArmorBody);
+            equipment.Add(Slot.Legs, startingArmorLegs);
 
         }
     }

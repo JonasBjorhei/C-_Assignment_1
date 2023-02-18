@@ -15,6 +15,8 @@ namespace Assignment1.Items
 
         public HeroClass.Slot slot { get; set; }
 
+        public HeroAttributes armorAttributes { get; set; }
+
 
 
     }

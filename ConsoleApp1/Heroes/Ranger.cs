@@ -32,10 +32,6 @@ namespace Assignment1.Heroes
 
         public override void equipArmor() { }
 
-        public override int TotalAttributes()
-        {
-            return 0;
-        }
 
         public override int Damage()
         {
