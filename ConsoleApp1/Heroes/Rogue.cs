@@ -21,27 +21,11 @@ namespace Assignment1.Heroes
         {
             name = heroName;
         }
-        public override void LevelUp()
-        {
-            level++;
-            levelAttributes.levelUpAttributes();
-            Console.WriteLine(name + " leveled up to level " + level);
 
-        }
 
         public override void equipWeapon() { }
 
         public override void equipArmor() { }
 
-
-        public override int Damage()
-        {
-            return 0;
-        }
-
-        public void Display()
-        {
-
-        }
     }
 }

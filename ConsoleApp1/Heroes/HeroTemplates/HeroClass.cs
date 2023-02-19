@@ -1,4 +1,5 @@
 ﻿using Assignment1.Items;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Assignment1.Heroes.HeroTemplates
 {
@@ -6,6 +7,8 @@ namespace Assignment1.Heroes.HeroTemplates
     {
         public string name { get; set; }
         public int level { get; set; } = 1;
+
+        public double totalDamage;
 
         public string Class { get; set; }
 
@@ -53,13 +56,40 @@ namespace Assignment1.Heroes.HeroTemplates
         }
 
 
-        public abstract void LevelUp();
+        public void LevelUp()
+        {
+            level++;
+            levelAttributes.levelUpAttributes();
+            Console.WriteLine(name + " leveled up to level " + level);
+        }
 
         public abstract void equipWeapon();
 
         public abstract void equipArmor();
 
-        public abstract int Damage();
+        public double Damage()
+        {
+         
+            switch (Class)
+            {
+                case "Mage":
+                    totalDamage = equipment[Slot.Weapon].weaponDamage * (1 + TotalAttributes().Intelligence / 100);
+                    break;
+
+                case "Ranger":
+                    totalDamage = equipment[Slot.Weapon].weaponDamage * (1 + TotalAttributes().Dexterity / 100);
+                    break;
+
+                case "Rogue":
+                    totalDamage = equipment[Slot.Weapon].weaponDamage * (1 + TotalAttributes().Dexterity / 100);
+                    break;
+
+                case "Warrior":
+                    totalDamage = equipment[Slot.Weapon].weaponDamage * (1 + TotalAttributes().Strength / 100);
+                    break;
+            }
+            return totalDamage;
+        }
 
         public HeroAttributes TotalAttributes()
         {
@@ -83,29 +113,31 @@ namespace Assignment1.Heroes.HeroTemplates
         {
             Console.WriteLine("Hello, World!");
             Console.WriteLine("Name: " + name);
-            Console.WriteLine("Class: "+ Class);
-            Console.WriteLine("Level ; "+ level);
+            Console.WriteLine("Class: " + Class);
+            Console.WriteLine("Level ; " + level);
 
             Console.WriteLine(name + " Strength is " + TotalAttributes().Strength);
             Console.WriteLine(name + " Dexterity is " + TotalAttributes().Dexterity);
             Console.WriteLine(name + " Intelligence is " + TotalAttributes().Intelligence);
 
+            Console.WriteLine(name + " weapon damage is " + equipment[Slot.Weapon].weaponDamage);
+            Console.WriteLine(name + " damage is " + Damage().ToString("N2"));
             //Damage
 
-/*            Console.WriteLine(equipment[Slot.Head].itemName + " Strength bonus is "  +equipment[Slot.Head].armorAttributes.Strength);
-            Console.WriteLine(equipment[Slot.Head].itemName + " Dexterity bonus is " + equipment[Slot.Head].armorAttributes.Dexterity);
-            Console.WriteLine(equipment[Slot.Head].itemName + " Intelligence bonus is " + equipment[Slot.Head].armorAttributes.Intelligence);
+            /*            Console.WriteLine(equipment[Slot.Head].itemName + " Strength bonus is "  +equipment[Slot.Head].armorAttributes.Strength);
+                        Console.WriteLine(equipment[Slot.Head].itemName + " Dexterity bonus is " + equipment[Slot.Head].armorAttributes.Dexterity);
+                        Console.WriteLine(equipment[Slot.Head].itemName + " Intelligence bonus is " + equipment[Slot.Head].armorAttributes.Intelligence);
 
-            Console.WriteLine(equipment[Slot.Body].itemName + " Strength bonus is " + equipment[Slot.Body].armorAttributes.Strength);
-            Console.WriteLine(equipment[Slot.Body].itemName + " Dexterity bonus is " + equipment[Slot.Body].armorAttributes.Dexterity);
-            Console.WriteLine(equipment[Slot.Body].itemName + " Intelligence bonus is " + equipment[Slot.Body].armorAttributes.Intelligence);
+                        Console.WriteLine(equipment[Slot.Body].itemName + " Strength bonus is " + equipment[Slot.Body].armorAttributes.Strength);
+                        Console.WriteLine(equipment[Slot.Body].itemName + " Dexterity bonus is " + equipment[Slot.Body].armorAttributes.Dexterity);
+                        Console.WriteLine(equipment[Slot.Body].itemName + " Intelligence bonus is " + equipment[Slot.Body].armorAttributes.Intelligence);
 
-            Console.WriteLine(equipment[Slot.Legs].itemName + " Strength bonus is " + equipment[Slot.Legs].armorAttributes.Strength);
-            Console.WriteLine(equipment[Slot.Legs].itemName + " Dexterity bonus is " + equipment[Slot.Legs].armorAttributes.Dexterity);
-            Console.WriteLine(equipment[Slot.Legs].itemName + " Intelligence bonus is " + equipment[Slot.Legs].armorAttributes.Intelligence);
+                        Console.WriteLine(equipment[Slot.Legs].itemName + " Strength bonus is " + equipment[Slot.Legs].armorAttributes.Strength);
+                        Console.WriteLine(equipment[Slot.Legs].itemName + " Dexterity bonus is " + equipment[Slot.Legs].armorAttributes.Dexterity);
+                        Console.WriteLine(equipment[Slot.Legs].itemName + " Intelligence bonus is " + equipment[Slot.Legs].armorAttributes.Intelligence);
 
-            Console.WriteLine(this.validArmorTypes);
-            Console.WriteLine(this.validWeaponTypes);*/
+                        Console.WriteLine(this.validArmorTypes);
+                        Console.WriteLine(this.validWeaponTypes);*/
 
             // Console.WriteLine(name + " Weapon is " + equipment[HeroClass.Slot.Weapon].slot);
         }

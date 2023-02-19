@@ -14,6 +14,51 @@ internal class Assignment
         Rogue rogueHero = new Rogue("Bach stabb");
         Ranger rangerHero = new Ranger("Legolas");
 
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+        mageHero.LevelUp();
+
         mageHero.Display();
 
 

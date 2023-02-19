@@ -10,7 +10,7 @@ namespace Assignment1.Items
 {
     internal class Weapon : Item
     {
-        public int weaponDamage;
+
         public enum WeaponTypes
         {
             Staff,

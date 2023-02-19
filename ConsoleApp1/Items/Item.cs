@@ -17,6 +17,9 @@ namespace Assignment1.Items
 
         public HeroAttributes armorAttributes { get; set; }
 
+        public int weaponDamage { get; set; }
+
+
 
 
     }
