@@ -24,12 +24,18 @@ internal class Assignment
         mageHero.LevelUp();
         mageHero.LevelUp();
 
-        Weapon wand = new Weapon("Frost wand", 3, Weapon.WeaponTypes.Wand);
-        Armor Chestplate = new Armor("Chestplate of destruction", 5, Armor.ArmorType.Plate, HeroClass.Slot.Body);
-        mageHero.EquipWeapon(wand);
-        mageHero.EquipArmor(Chestplate);
+        Weapon wan = new Weapon("Frost wand", 5, Weapon.WeaponTypes.Wand);
+        Armor robe = new Armor("Robe of destruction", 5, Armor.ArmorType.Cloth, HeroClass.Slot.Body);
+        mageHero.EquipWeapon(wan);
+        mageHero.EquipArmor(robe);
+
+        Armor chestplate = new Armor("Chestplate of destruction", 5, Armor.ArmorType.Plate, HeroClass.Slot.Body);
+        mageHero.EquipArmor(chestplate);
 
         mageHero.Display();
+        rangerHero.Display();
+        rogueHero.Display();
+        warriorHero.Display();
 
 
 

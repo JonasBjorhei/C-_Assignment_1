@@ -37,7 +37,7 @@ namespace Assignment1.Items
 
         private int generateWeaponDamage()
         {
-            int damagemodifier = 4;
+            int damagemodifier = 5;
             int randomizedModifier = RandomNumberGenerator.GetInt32(damagemodifier) + 1;
             return (weaponDamage * requiredLevel) + randomizedModifier;
         }

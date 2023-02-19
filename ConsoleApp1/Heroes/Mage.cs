@@ -25,44 +25,63 @@ namespace Assignment1.Heroes
         }
         public Mage(string heroName)
         {
-            
             name = heroName;
             Class = "Mage";
-
             levelAttributes = new HeroAttributes(1, 1, 8, 1, 1, 5);
-            startingArmorHead = new Items.Armor("Beginner hat", 1, Items.Armor.ArmorType.Cloth, Slot.Head);
-            startingArmorBody = new Items.Armor("Beginner robe", 1, Items.Armor.ArmorType.Cloth, Slot.Body);
-            startingArmorLegs = new Items.Armor("Beginner pants", 1, Items.Armor.ArmorType.Cloth, Slot.Legs);
-            startingWeapon = new Items.Weapon("Beginner staff", 1, Items.Weapon.WeaponTypes.Staff);
+            startingArmorHead = new Armor("Beginner hat", 1, Armor.ArmorType.Cloth, Slot.Head);
+            startingArmorBody = new Armor("Beginner robe", 1, Armor.ArmorType.Cloth, Slot.Body);
+            startingArmorLegs = new Armor("Beginner pants", 1, Armor.ArmorType.Cloth, Slot.Legs);
+            startingWeapon = new Weapon("Beginner Staff", 1, Weapon.WeaponTypes.Staff);
             initializeStarterGear();
-            
         }
-
+        /// <summary>
+        /// Checks if the weapon is a valid types. Equips it if it is.
+        /// </summary>
+        /// <param name="weapon"></param>
         public override void EquipWeapon(Weapon weapon)
         {
-            if (weapon.requiredLevel <= level)
-            {
-                switch ((int)weapon.weaponType)
+  //          try
+  //          {
+                if (weapon.requiredLevel <= level)
                 {
-                    case ((int)ValidWeaponTypes.Staff):
-                            equipment[weapon.slot] = weapon;
-                            Console.WriteLine("Equipped weapon " + weapon.itemName);
-                            break;
-                    case ((int)ValidWeaponTypes.Wand):
-                            equipment[weapon.slot] = weapon;
-                            Console.WriteLine("Equipped weapon " + weapon.itemName);
-                            break;
-                    default:
-                            Console.WriteLine("The hero can't equip that weapon type ");
-                            //throw InvalidWeaponType;
-                            break;
+  //                  try
+  //                  {
 
+
+                        switch ((int)weapon.weaponType)
+                        {
+                            case ((int)ValidWeaponTypes.Staff):
+                                equipment[weapon.slot] = weapon;
+                                Console.WriteLine("Equipped weapon " + weapon.itemName);
+                                break;
+                            case ((int)ValidWeaponTypes.Wand):
+                                equipment[weapon.slot] = weapon;
+                                Console.WriteLine("Equipped weapon " + weapon.itemName);
+                                break;
+                            default:
+                                Console.WriteLine("The hero can't equip that weapon type");
+                                break;
+
+                        }
+            //                   }
+            //                   catch (InvalidWeaponType ex)
+            //                   {
+            //                       Console.WriteLine("The hero can't equip that weapon type");
+            //                       throw new InvalidWeaponType("The hero can't equip that weapon type");
+            //                   }
                 }
-            }
-            else Console.WriteLine("The hero is too low level to equip this");
-
-            //throw LevelTooLowException;
+                else Console.WriteLine("The hero is too low level to equip this");
+            //           }
+            //           catch (LevelTooLowException ex)
+            //           {
+            //            Console.WriteLine("The hero is too low level to equip this");
+            //          throw new LevelTooLowException("The hero is too low level to equip this", ex);    
+            //           }
         }
+        /// <summary>
+        /// Checks if the armor is a valid type. Equips it if it is.
+        /// </summary>
+        /// <param name="armor"></param>
         public override void EquipArmor(Armor armor)
         {
             if (armor.requiredLevel <= level)
@@ -79,8 +98,9 @@ namespace Assignment1.Heroes
                         break;
 
                 }
-}
-            else throw LevelTooLowException;
+            }
+            else Console.WriteLine("The hero is too low level to equip this");
+            //throw LevelTooLowException;
         }
 
     }

@@ -4,8 +4,34 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace Assignment1.Heroes.HeroTemplates
 {
+
+
     internal abstract class HeroClass
-    {
+    {   
+        public class LevelTooLowException : Exception
+        {
+            public LevelTooLowException() { }
+
+            public LevelTooLowException(string message) : base(message) { }
+
+            public LevelTooLowException(string message, Exception innerException) : base(message, innerException) { }
+        }
+        public class InvalidWeaponType : Exception
+        {
+            public InvalidWeaponType() { }
+
+            public InvalidWeaponType(string message) : base(message) { }
+
+            public InvalidWeaponType(string message, Exception innerException) : base(message, innerException) { }
+        }
+        public class InvalidArmorType : Exception
+        {
+            public InvalidArmorType() { }
+
+            public InvalidArmorType(string message) : base(message) { }
+
+            public InvalidArmorType(string message, Exception innerException) : base(message, innerException) { }
+        }
         public string name { get; set; }
         public int level { get; set; } = 1;
 
@@ -16,10 +42,6 @@ namespace Assignment1.Heroes.HeroTemplates
         public HeroAttributes levelAttributes { get; set; }
 
         public Dictionary<Slot, Item> equipment { get; set; }
-
-        public Exception LevelTooLowException;
-        public Exception InvalidWeaponType;
-        public Exception InvalidArmorType;
 
         public Weapon startingWeapon;
         public Armor startingArmorHead;
@@ -132,18 +154,18 @@ namespace Assignment1.Heroes.HeroTemplates
         /// </summary>
         public void Display()
         {
-            Console.WriteLine("Hello, World!");
+            Console.WriteLine(" ");
             Console.WriteLine("Name: " + name);
             Console.WriteLine("Class: " + Class);
-            Console.WriteLine("Level ; " + level);
+            Console.WriteLine("Level: " + level);
 
             Console.WriteLine(name + " Strength is " + TotalAttributes().Strength);
             Console.WriteLine(name + " Dexterity is " + TotalAttributes().Dexterity);
             Console.WriteLine(name + " Intelligence is " + TotalAttributes().Intelligence);
 
-            Console.WriteLine(name + " weapon damage is " + equipment[Slot.Weapon].weaponDamage);
+
             Console.WriteLine(name + " damage is " + Damage().ToString("N2"));
-            //Damage
+            Console.WriteLine(" ");
 
 /*            Console.WriteLine(equipment[Slot.Head].itemName + " Strength bonus is " + equipment[Slot.Head].armorAttributes.Strength);
             Console.WriteLine(equipment[Slot.Head].itemName + " Dexterity bonus is " + equipment[Slot.Head].armorAttributes.Dexterity);
@@ -155,9 +177,10 @@ namespace Assignment1.Heroes.HeroTemplates
 
             Console.WriteLine(equipment[Slot.Legs].itemName + " Strength bonus is " + equipment[Slot.Legs].armorAttributes.Strength);
             Console.WriteLine(equipment[Slot.Legs].itemName + " Dexterity bonus is " + equipment[Slot.Legs].armorAttributes.Dexterity);
-            Console.WriteLine(equipment[Slot.Legs].itemName + " Intelligence bonus is " + equipment[Slot.Legs].armorAttributes.Intelligence);*/
+            Console.WriteLine(equipment[Slot.Legs].itemName + " Intelligence bonus is " + equipment[Slot.Legs].armorAttributes.Intelligence)
 
             Console.WriteLine(name + " Weapon is " + equipment[Slot.Weapon].itemName);
+            Console.WriteLine(name + " weapon damage is " + equipment[Slot.Weapon].weaponDamage);*/
         }
         /// <summary>
         /// Equips the hero with some gear, this is to stop it from being null and creating problems.
