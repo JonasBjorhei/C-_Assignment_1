@@ -46,8 +46,6 @@ namespace Assignment1.Heroes
                 {
   //                  try
   //                  {
-
-
                         switch ((int)weapon.weaponType)
                         {
                             case ((int)ValidWeaponTypes.Staff):
@@ -61,7 +59,6 @@ namespace Assignment1.Heroes
                             default:
                                 Console.WriteLine("The hero can't equip that weapon type");
                                 break;
-
                         }
             //                   }
             //                   catch (InvalidWeaponType ex)
