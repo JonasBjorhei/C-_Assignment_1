@@ -6,7 +6,7 @@ namespace Assignment1.Heroes.HeroTemplates
 {
 
 
-    internal abstract class HeroClass
+    public abstract class HeroClass
     {   
         public class LevelTooLowException : Exception
         {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Assignment1.Items
 {
-    internal class Item
+    public class Item
     {
 
        public string itemName { get; set; }

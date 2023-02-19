@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Assignment1.Heroes
 {
-    internal class Warrior : HeroClass
+    public class Warrior : HeroClass
     {
         public new enum ValidWeaponTypes
         {

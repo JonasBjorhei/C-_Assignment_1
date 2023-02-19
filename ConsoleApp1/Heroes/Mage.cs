@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Assignment1.Heroes
 {
-    internal class Mage : HeroClass
+    public class Mage : HeroClass
     {
 
         public new enum ValidWeaponTypes
