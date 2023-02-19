@@ -1,4 +1,5 @@
 ﻿using Assignment1.Items;
+using System.Diagnostics.CodeAnalysis;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Assignment1.Heroes.HeroTemplates
@@ -44,9 +45,6 @@ namespace Assignment1.Heroes.HeroTemplates
             Plate
         };
 
-        public ValidArmorTypes validArmorTypes;
-        public ValidWeaponTypes validWeaponTypes;
-
         public enum Slot
         {
             Weapon,
@@ -55,20 +53,38 @@ namespace Assignment1.Heroes.HeroTemplates
             Legs
         }
 
-
+        /// <summary>
+        /// Levels up the hero and increases its attributes.
+        /// </summary>
         public void LevelUp()
         {
             level++;
             levelAttributes.levelUpAttributes();
             Console.WriteLine(name + " leveled up to level " + level);
         }
+        /// <summary>
+        /// Wanted the function to be inside this class but could no get it to work.
+        /// </summary>
+        /// <param name="weapon"></param>
+        public abstract void EquipWeapon(Weapon weapon);
 
-        public abstract void equipWeapon();
-
-        public abstract void equipArmor();
-
+        /// <summary>
+        /// Wanted the function to be inside this class but could no get it to work.
+        /// </summary>
+        /// <param name="armor"></param>
+        public abstract void EquipArmor(Armor armor);
+        
+        /// <summary>
+        /// Calculates the total damage a hero will do. Tried to get it to calculate with doubles but does not currently work
+        /// </summary>
+        /// <returns>totalDamage</returns>
         public double Damage()
         {
+            if (equipment[Slot.Weapon] == null)
+            {
+                equipment[Slot.Weapon] = startingWeapon;
+                equipment[Slot.Weapon].weaponDamage = 1;
+            }
          
             switch (Class)
             {
@@ -90,7 +106,10 @@ namespace Assignment1.Heroes.HeroTemplates
             }
             return totalDamage;
         }
-
+        /// <summary>
+        /// Adds the heroes attributes and attributes from equipment and returns the total amount of attributes
+        /// </summary>
+        /// <returns>totalAttributes</returns>
         public HeroAttributes TotalAttributes()
         {
             HeroAttributes totalAttributes = new HeroAttributes(0, 0, 0, 0, 0, 0);
@@ -108,7 +127,9 @@ namespace Assignment1.Heroes.HeroTemplates
                                      + equipment[Slot.Legs].armorAttributes.Intelligence;
             return totalAttributes;
         }
-
+        /// <summary>
+        /// Displays all the important details about a hero
+        /// </summary>
         public void Display()
         {
             Console.WriteLine("Hello, World!");
@@ -124,24 +145,23 @@ namespace Assignment1.Heroes.HeroTemplates
             Console.WriteLine(name + " damage is " + Damage().ToString("N2"));
             //Damage
 
-            /*            Console.WriteLine(equipment[Slot.Head].itemName + " Strength bonus is "  +equipment[Slot.Head].armorAttributes.Strength);
-                        Console.WriteLine(equipment[Slot.Head].itemName + " Dexterity bonus is " + equipment[Slot.Head].armorAttributes.Dexterity);
-                        Console.WriteLine(equipment[Slot.Head].itemName + " Intelligence bonus is " + equipment[Slot.Head].armorAttributes.Intelligence);
+/*            Console.WriteLine(equipment[Slot.Head].itemName + " Strength bonus is " + equipment[Slot.Head].armorAttributes.Strength);
+            Console.WriteLine(equipment[Slot.Head].itemName + " Dexterity bonus is " + equipment[Slot.Head].armorAttributes.Dexterity);
+            Console.WriteLine(equipment[Slot.Head].itemName + " Intelligence bonus is " + equipment[Slot.Head].armorAttributes.Intelligence);
 
-                        Console.WriteLine(equipment[Slot.Body].itemName + " Strength bonus is " + equipment[Slot.Body].armorAttributes.Strength);
-                        Console.WriteLine(equipment[Slot.Body].itemName + " Dexterity bonus is " + equipment[Slot.Body].armorAttributes.Dexterity);
-                        Console.WriteLine(equipment[Slot.Body].itemName + " Intelligence bonus is " + equipment[Slot.Body].armorAttributes.Intelligence);
+            Console.WriteLine(equipment[Slot.Body].itemName + " Strength bonus is " + equipment[Slot.Body].armorAttributes.Strength);
+            Console.WriteLine(equipment[Slot.Body].itemName + " Dexterity bonus is " + equipment[Slot.Body].armorAttributes.Dexterity);
+            Console.WriteLine(equipment[Slot.Body].itemName + " Intelligence bonus is " + equipment[Slot.Body].armorAttributes.Intelligence);
 
-                        Console.WriteLine(equipment[Slot.Legs].itemName + " Strength bonus is " + equipment[Slot.Legs].armorAttributes.Strength);
-                        Console.WriteLine(equipment[Slot.Legs].itemName + " Dexterity bonus is " + equipment[Slot.Legs].armorAttributes.Dexterity);
-                        Console.WriteLine(equipment[Slot.Legs].itemName + " Intelligence bonus is " + equipment[Slot.Legs].armorAttributes.Intelligence);
+            Console.WriteLine(equipment[Slot.Legs].itemName + " Strength bonus is " + equipment[Slot.Legs].armorAttributes.Strength);
+            Console.WriteLine(equipment[Slot.Legs].itemName + " Dexterity bonus is " + equipment[Slot.Legs].armorAttributes.Dexterity);
+            Console.WriteLine(equipment[Slot.Legs].itemName + " Intelligence bonus is " + equipment[Slot.Legs].armorAttributes.Intelligence);*/
 
-                        Console.WriteLine(this.validArmorTypes);
-                        Console.WriteLine(this.validWeaponTypes);*/
-
-            // Console.WriteLine(name + " Weapon is " + equipment[HeroClass.Slot.Weapon].slot);
+            Console.WriteLine(name + " Weapon is " + equipment[Slot.Weapon].itemName);
         }
-
+        /// <summary>
+        /// Equips the hero with some gear, this is to stop it from being null and creating problems.
+        /// </summary>
         public void initializeStarterGear()
         {
             equipment = new Dictionary<Slot, Item>();

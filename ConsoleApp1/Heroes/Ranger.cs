@@ -1,4 +1,5 @@
 ﻿using Assignment1.Heroes.HeroTemplates;
+using Assignment1.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,10 +22,58 @@ namespace Assignment1.Heroes
             name = heroName;
         }
 
+        public override void EquipWeapon(Weapon weapon)
+        {
+            if (weapon.requiredLevel <= level)
+            {
+                switch ((int)weapon.weaponType)
+                {
+                    case ((int)ValidWeaponTypes.Bow):
+                            equipment[weapon.slot] = weapon;
+                            Console.WriteLine("Equipped weapon " + weapon.itemName);
+                        break;
+                    default:
+                        Console.WriteLine("The hero can't equip that weapon type ");
+                        //throw InvalidWeaponType;
+                        break;
 
-        public override void equipWeapon() { }
+                }
+            }
+            else Console.WriteLine("The hero is too low level to equip this");
 
-        public override void equipArmor() { }
+            //throw LevelTooLowException;
 
+        }
+        public override void EquipArmor(Armor armor)
+        {
+            if (armor.requiredLevel <= level)
+            {
+                switch ((int) armor.armorType)
+                {
+                    case (int) ValidArmorTypes.Cloth:
+                        equipment[armor.slot] = armor;
+        Console.WriteLine("Equipped weapon " + armor.itemName);
+                        break;
+                    case (int) ValidArmorTypes.Leather:
+                        equipment[armor.slot] = armor;
+        Console.WriteLine("Equipped weapon " + armor.itemName);
+                        break;
+                    case (int) ValidArmorTypes.Mail:
+                        equipment[armor.slot] = armor;
+        Console.WriteLine("Equipped weapon " + armor.itemName);
+                        break;
+                    case (int) ValidArmorTypes.Plate:
+                        equipment[armor.slot] = armor;
+        Console.WriteLine("Equipped weapon " + armor.itemName);
+                        break;
+                    default:
+                        Console.WriteLine("Your class can not equip this armor type");
+                        //throw InvalidWeaponType;
+                        break;
+
+                }
+            }
+            else throw LevelTooLowException;
+        }
     }
 }

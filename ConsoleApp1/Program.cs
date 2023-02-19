@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Assignment1.Heroes;
 using Assignment1.Heroes.HeroTemplates;
+using Assignment1.Items;
 using System.Diagnostics;
 
 
@@ -23,41 +24,10 @@ internal class Assignment
         mageHero.LevelUp();
         mageHero.LevelUp();
 
-        mageHero.LevelUp();
-        mageHero.LevelUp();
-        mageHero.LevelUp();
-        mageHero.LevelUp();
-        mageHero.LevelUp();
-        mageHero.LevelUp();
-        mageHero.LevelUp();
-        mageHero.LevelUp();
-
-        mageHero.LevelUp();
-        mageHero.LevelUp();
-        mageHero.LevelUp();
-        mageHero.LevelUp();
-        mageHero.LevelUp();
-        mageHero.LevelUp();
-        mageHero.LevelUp();
-        mageHero.LevelUp();
-
-        mageHero.LevelUp();
-        mageHero.LevelUp();
-        mageHero.LevelUp();
-        mageHero.LevelUp();
-        mageHero.LevelUp();
-        mageHero.LevelUp();
-        mageHero.LevelUp();
-        mageHero.LevelUp();
-
-        mageHero.LevelUp();
-        mageHero.LevelUp();
-        mageHero.LevelUp();
-        mageHero.LevelUp();
-        mageHero.LevelUp();
-        mageHero.LevelUp();
-        mageHero.LevelUp();
-        mageHero.LevelUp();
+        Weapon wand = new Weapon("Frost wand", 3, Weapon.WeaponTypes.Wand);
+        Armor Chestplate = new Armor("Chestplate of destruction", 5, Armor.ArmorType.Plate, HeroClass.Slot.Body);
+        mageHero.EquipWeapon(wand);
+        mageHero.EquipArmor(Chestplate);
 
         mageHero.Display();
 

@@ -22,7 +22,7 @@ namespace Assignment1.Items
             Axe
         };
 
-        public WeaponTypes weaponType;
+        public WeaponTypes weaponType { get; set; }
 
         
 
